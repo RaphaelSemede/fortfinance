@@ -4,14 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Olá, Mundo!</h1>
-        <p>Este é um exemplo de página HTML.</p>
-        <button id="myButton">Clique aqui</button>
+        <div class="header">
+            <div class="usuario">
+                <img src="images/user-solid.svg" id="user" alt="User Icon">
+                <a id="usuario">Nome do usuário</a>
+            </div>
+            <div class="configuracoes">
+                <img src="images/gear-solid.svg" id="gear" alt="Configurations Icon">
+            </div>
     </div>
+    <section class="resumo-mensal">
+        <div class="cards">
+
+            <div class="card">
+                <h2>Receita do Mês:</h2>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="card">
+                <h2>Despesas do Mês:</h2>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="card">
+                <h2>Saldo Atual:</h2>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="card">
+                <h2>Progresso Atual:</h2>
+                <p>R$ 0,00</p>
+            </div>
+            
+        </div>
+    </section>
 </body>
 </html>
