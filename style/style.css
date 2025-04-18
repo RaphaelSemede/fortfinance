@@ -32,16 +32,34 @@ body{
 .cards {
     display: flex;
     justify-content: center;
+    position: relative;
+    right: 7%;
     gap: 20px;
-    font-size: 13px;
-    padding-right: 125px;
     padding-top: 15px;
 }
-
+.cards p{
+    font-size: 15px;
+}
 .card{
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     flex: 1;
     padding: 15px;
+    font-size: 13px;
+}
+.graficos{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 15px;
+}
+
+.grafico{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 530px;
+    height: 300px;
+    padding-left: 20px;
 }
