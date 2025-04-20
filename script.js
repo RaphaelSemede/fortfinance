@@ -1,12 +1,13 @@
 const formulario = document.querySelector("form");
 const Iemail = document.querySelector("#email");
+const Inome = document.querySelector("#nome");
 const Isenha = document.querySelector("#senha");
 const Iusername = document.querySelector("#username");
-const Itel = document.querySelector("#tel");
+const Itelefone = document.querySelector("#tel");
 
 function cadastrar() {
 
-    fetch("http://localhost:8080/cadastrar",
+    fetch("http://localhost:8080/usuarios",
         {
             headers: {
                 "Accept": "application/json",
@@ -15,9 +16,10 @@ function cadastrar() {
             method: "POST",
             body: JSON.stringify({
                 email: Iemail.value,
+                nome: Inome.value,
                 senha: Isenha.value,
                 username: Iusername.value,
-                tel: Itel.value
+                telefone: Itelefone.value
             })
         })
         .then(function (res) {console.log(res)})
@@ -26,9 +28,10 @@ function cadastrar() {
 
 function limparCampos() {
     Iemail.value = "";
+    Inome.value = "";
     Isenha.value = "";
     Iusername.value = "";
-    Itel.value = "";
+    Itelefone.value = "";
 }
 
 formulario.addEventListener("submit", function (event) {

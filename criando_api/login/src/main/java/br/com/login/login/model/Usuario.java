@@ -18,6 +18,9 @@ public class Usuario {
 	
 	@Column(name = "nome_completo", length = 200, nullable = true)
 	private String nome_completo;
+	
+	@Column(name = "username", length = 100, nullable = true)
+	private String username;
 
 	@Column(name = "email", length = 50, nullable = true)
 	private String email;
@@ -41,6 +44,12 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome_completo = nome;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -59,5 +68,4 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
 }
