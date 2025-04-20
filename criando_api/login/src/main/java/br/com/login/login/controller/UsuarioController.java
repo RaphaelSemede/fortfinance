@@ -19,7 +19,7 @@ import br.com.login.login.model.Usuario;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/usuarios")
+@RequestMapping("/cadastrar")
 public class UsuarioController{
 	
 	@Autowired
