@@ -7,6 +7,16 @@ const Itelefone = document.querySelector("#tel");
 
 function cadastrar() {
 
+    if (!emailValido) {
+        alert("Por favor, use um email que ainda não foi cadastrado.");
+        return;
+    }
+
+    if(!Iemail.value || !Inome.value || !Isenha.value || Iusername.value || Itelefone.value){
+        alert("Por favor, preencha todos os campos");
+        return;
+    }
+
     fetch("http://localhost:8080/cadastrar",{
         
             headers: {

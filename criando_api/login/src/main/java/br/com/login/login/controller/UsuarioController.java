@@ -1,7 +1,6 @@
 package br.com.login.login.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +33,12 @@ public class UsuarioController{
 	
 	@PostMapping
 	public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) {
+
+		List<Usuario> usuarioExistente = dao.findByEmail(usuario.getEmail());
+		if(!usuarioExistente.isEmpty()){
+			return ResponseEntity.status(400).build(); // Return 400 Bad Request for existing email
+		}
+
 		Usuario usuarioNovo = dao.save(usuario);
 		return ResponseEntity.status(201).body(usuarioNovo);
 	}
