@@ -41,9 +41,14 @@ public class UsuarioController{
 
 		Optional<Usuario> usuarioExistente = dao.findByUsernameIgnoreCase(usuario.getUsername());
 		Optional<Usuario> emailUsado = dao.findByEmailIgnoreCase(usuario.getEmail());
+		Optional<Usuario> telefoneUsado = dao.findByTelefone(usuario.getTelefone());
 
 		if(usuarioExistente.isPresent()){
 			return ResponseEntity.badRequest().body("Nome já em uso");
+		}
+
+		if(telefoneUsado.isPresent()){
+			return ResponseEntity.badRequest().body("Telefone já em uso");
 		}
 
 		if (emailUsado.isPresent()) {
@@ -79,6 +84,27 @@ public class UsuarioController{
 		}
 	}
 
+	@GetMapping("/verificar-tel")
+	public ResponseEntity<Map<String, Boolean>> verificarTelefone(@RequestParam String telefone) {
+		try {
+			Optional<Usuario> usuario = dao.findByTelefone(telefone);
+	
+			Map<String, Boolean> resposta = new HashMap<>();
+			if (usuario.isPresent()) {
+				resposta.put("telefoneValido", false);
+			} 
+			else {
+				resposta.put("telefoneValido", true);
+			}
+	
+			return ResponseEntity.ok(resposta);
+		} catch (Exception e) {
+			Map<String, Boolean> erro = new HashMap<>();
+			erro.put("telefoneValido", false);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erro);
+		}
+	}
+
 	@GetMapping("/verificar-username")
 	public ResponseEntity<Map<String, Boolean>> verificarUsername(@RequestParam String username) {
 		try {
@@ -87,7 +113,7 @@ public class UsuarioController{
 			Map<String, Boolean> resposta = new HashMap<>();
 			if (usuario.isPresent()) {
 				resposta.put("usernameValido", false);
-			} 
+			}
 			else {
 				resposta.put("usernameValido", true);
 			}

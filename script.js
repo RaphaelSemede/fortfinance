@@ -36,6 +36,37 @@ function verificarUsername(){
     });
 }
 
+function verificarTelefone(){
+    const telefone = Itelefone.value;
+
+    return fetch(`http://localhost:8080/cadastrar/verificar-tel?telefone=${encodeURIComponent(telefone)}`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro na verificação do telefone");
+        }
+
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType.includes("application/json")) {
+            return response.json();
+        } else {
+            throw new Error("Resposta não é JSON");
+        }
+    })
+    .then(data => {
+        console.log("Resposta da verificação:", data);
+        return data.telefoneValido;
+    })
+    .catch(error => {
+        console.error("Erro:", error);
+        return false;
+    });
+}
+
 function verificarEmail() {
     const email = Iemail.value;
 
@@ -83,6 +114,7 @@ function limparCampos() {
 async function cadastrar() {
     const emailValido = await verificarEmail();
     const usernameValido = await verificarUsername();
+    const telefoneValido = await verificarTelefone();
 
     if (!emailValido) {
         alert("Por favor, use um email que ainda não foi cadastrado.");
@@ -90,6 +122,10 @@ async function cadastrar() {
     }
     if (!usernameValido) {
         alert("Por favor, use um nome de usuário que ainda não está em uso.");
+        return;
+    }
+    if (!telefoneValido) {
+        alert("Por favor, use um telefone que ainda não está em uso.");
         return;
     }    
     if (!Iemail.value || !Inome.value || !Isenha.value || !Iusername.value || !Itelefone.value) {
