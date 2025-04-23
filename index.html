@@ -6,20 +6,7 @@
     <title>Página Principal</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/index.css">
-    <script>
-        const dadosSalvos = localStorage.getItem("usuario") || sessionStorage.getItem("usuario");
-        if (dadosSalvos) {
-
-            const usuario = JSON.parse(dadosSalvos);
-
-            console.log("Usuário logado:", usuario);
-        }
-
-        if (!dadosSalvos) {
-            window.location.href = "login.html";
-        }
-
-    </script>
+    <script src="js/index.js" defer></script>
 </head>
 
 <body>
@@ -27,7 +14,7 @@
         <header class="header">
             <div class="usuario">
                 <img src="images/user-solid.svg" id="user-icon" alt="Ícone de Usuário">
-                <span id="usuario-nome">Nome do usuário</span>
+                <span id="usuario-nome"></span>
             </div>
             <div class="configuracoes">
                 <img src="images/gear-solid.svg" id="config-gear" alt="Ícone de Configurações">

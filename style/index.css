@@ -16,20 +16,24 @@ body {
     padding: 0 15px;
 }
 
-.header #username {
+.usuario #usuario-nome{
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
 .header #user-icon {
     width: 35px;
     height: 35px;
-    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 .header #config-gear {
     margin-right: 40px;
+    margin-top: 10px;
     width: 35px;
     height: 35px;
 }
