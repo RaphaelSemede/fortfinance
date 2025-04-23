@@ -126,6 +126,26 @@ public class UsuarioController{
 		}
 	}
 
+	@PostMapping("/verificar-senha")
+	public ResponseEntity<?> login(@RequestBody Map<String, String> loginData) {
+		String email = loginData.get("email");
+		String senha = loginData.get("senha");
+
+		Optional<Usuario> usuarioOptional = dao.findByEmailIgnoreCase(email);
+
+		if (usuarioOptional.isPresent()) {
+			Usuario usuario = usuarioOptional.get();
+
+			if (usuario.getSenha().equals(senha)) {
+				return ResponseEntity.ok(usuario);
+			} else {
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Senha incorreta");
+			}
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email não encontrado");
+		}
+	}
+
 
 	@PutMapping("/editar/{id}")
 	public ResponseEntity<Usuario> editarUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
