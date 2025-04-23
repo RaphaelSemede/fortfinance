@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/login.css">
+        <script src="js/login.js" defer></script>
     </head>
     <body>
         <div class="box">
@@ -15,7 +16,10 @@
                 <h1 id="login">Login</h1>
                 <form>
                     <input type="text" id="email" name="email" placeholder="E-mail" required>
-                    <input type="password" id="password" name="password" placeholder="Senha" required>
+                    <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                    <label>
+                        <input type="checkbox" id="manterConectado"/> Manter Conectado
+                    </label>
                     <button type="submit">Entrar</button>
                 </form>
             </div>

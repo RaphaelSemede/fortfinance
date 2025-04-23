@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,18 +8,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/login.css">
-        <script src="/script.js" defer></script>
+        <script src="js/cadastro.js" defer></script>
     </head>
     <body>
         <div class="box">
             <div class="login">
                 <h1 id="login">Login</h1>
                 <form>
-                    <input type="text" id="email" class="email" placeholder="E-mail" required>
+                    <label>
+                        <input type="text" id="email" class="email" placeholder="E-mail" required>
+                    </label>
+                    <label>
                     <input type="text" id="nome" class="nome" placeholder="Nome Completo" required>
+                    </label>
+                    <label>
                     <input type="password" id="senha" class="senha" name="senha" placeholder="Senha" required>
+                    </label>
+                    <label>
                     <input type="text" id="username" class="username" name="username" placeholder="Nome de Usuário" required>
+                    </label>
+                    <label>
                     <input type="text" id="tel" class="tel" name="tel" placeholder="Telefone" required>
+                    </label>
                     <button type="submit">Entrar</button>
                 </form>
             </div>

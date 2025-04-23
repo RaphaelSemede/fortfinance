@@ -103,6 +103,15 @@ function verificarEmail() {
     });
 }
 
+function manterConectado(){
+    const dadosUsuario = {
+        email: Iemail.value,
+        username: Iusername.value,
+        nome: Inome.value
+    };
+    localStorage.setItem("usuario", JSON.stringify(dadosUsuario));
+}
+
 function limparCampos() {
     Iemail.value = "";
     Inome.value = "";
@@ -149,7 +158,9 @@ async function cadastrar() {
     })
     .then(function (res) {
         console.log("Cadastro realizado:", res);
+        manterConectado();
         limparCampos();
+        window.location.href = "http://127.0.0.1:5500/index.html";
     })
     .catch(function (err) {
         console.error("Erro no cadastro:", err);

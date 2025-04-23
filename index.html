@@ -6,6 +6,20 @@
     <title>Página Principal</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/index.css">
+    <script>
+        const dadosSalvos = localStorage.getItem("usuario") || sessionStorage.getItem("usuario");
+        if (dadosSalvos) {
+
+            const usuario = JSON.parse(dadosSalvos);
+
+            console.log("Usuário logado:", usuario);
+        }
+
+        if (!dadosSalvos) {
+            window.location.href = "login.html";
+        }
+
+    </script>
 </head>
 
 <body>
