@@ -160,7 +160,7 @@ async function cadastrar() {
         console.log("Cadastro realizado:", res);
         manterConectado();
         limparCampos();
-        window.location.href = "http://127.0.0.1:5500/index.html";
+        window.location.href = "index.html";
     })
     .catch(function (err) {
         console.error("Erro no cadastro:", err);
