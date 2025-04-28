@@ -12,8 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 @Entity
 @Table(name = "despesas")
@@ -77,5 +75,4 @@ public class Despesas {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
 }

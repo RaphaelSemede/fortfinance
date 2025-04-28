@@ -33,6 +33,10 @@ public class Usuario {
 	@JsonManagedReference
 	private List<Despesas> despesas;
 
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<Receitas> receitas;
+
 	public Integer getId() {
 		return id;
 	}
@@ -75,5 +79,8 @@ public class Usuario {
 
 	public void setDespesas(List<Despesas> despesas) {
 		this.despesas = despesas;
+	}
+	public void setReceitas(List<Receitas> receitas) {
+		this.receitas = receitas;
 	}
 }

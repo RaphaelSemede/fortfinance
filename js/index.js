@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            const id = usuario.id;
-
             // Atualiza nome do usuário
             const username = usuario.username || usuario.nome || usuario.email;
             const elementoNome = document.querySelector("#usuario-nome");
@@ -32,6 +30,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(response => response.json())
                 .then(total => {
                     const elemento = document.querySelector("#despesa-total");
+                    if (elemento) {
+                        const valorFormatado = new Intl.NumberFormat('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }).format(total);
+
+                        elemento.textContent = `${valorFormatado}`;
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao buscar total de despesas:", error);
+                });
+
+            // Busca total de Receitas
+            fetch(`http://localhost:8080/receitas/total/${encodeURIComponent(usuario.email)}`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                }
+            })
+                .then(response => response.json())
+                .then(total => {
+                    const elemento = document.querySelector("#receita-total");
                     if (elemento) {
                         const valorFormatado = new Intl.NumberFormat('pt-BR', {
                             style: 'currency',
