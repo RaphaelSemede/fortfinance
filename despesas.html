@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Despesas</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/despesas.css">
+</head>
+<body>
+<div class="container">
+
+    <header class="header">
+
+        <div class="usuario">
+            <img src="images/user-solid.svg" id="user-icon" alt="Ícone de Usuário">
+            <span id="usuario-nome"></span>
+        </div>
+
+        <div class="configuracoes">
+            <img src="images/gear-solid.svg" id="config-gear" alt="Ícone de Configurações">
+        </div>
+
+    </header>
+
+    <section class="despesas">
+        <div class="box">
+            <h2 id="despesas">Despesas</h2>
+            <form>
+                <input type="text" id="despesa" placeholder="Nome da Despesa">
+                <input type="text" id="valor" placeholder="Valor">
+                <input type="date" id="data" placeholder="Data">
+                <input type="text" id="descricao" placeholder="Descrição">
+                <div class="buttons">
+                    <button id="adicionar">Adicionar</button>
+                    <button id="cacelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>

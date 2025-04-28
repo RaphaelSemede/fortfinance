@@ -13,58 +13,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Atualiza nome do usuário
             const username = usuario.username || usuario.nome || usuario.email;
             const elementoNome = document.querySelector("#usuario-nome");
             if (elementoNome) {
                 elementoNome.innerText = username;
             }
 
-            // Busca total de despesas
-            fetch(`http://localhost:8080/despesas/total/${encodeURIComponent(usuario.email)}`, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json",
-                }
-            })
-                .then(response => response.json())
-                .then(total => {
-                    const elemento = document.querySelector("#despesa-total");
-                    if (elemento) {
-                        const valorFormatado = new Intl.NumberFormat('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL'
-                        }).format(total);
-
-                        elemento.textContent = `${valorFormatado}`;
-                    }
+            function atualizarTotal(endpoint, elementoId) {
+                fetch(`http://localhost:8080/${endpoint}/${encodeURIComponent(usuario.email)}`, {
+                    method: "GET",
+                    headers: { "Accept": "application/json" }
                 })
-                .catch(error => {
-                    console.error("Erro ao buscar total de despesas:", error);
-                });
+                    .then(response => response.json())
+                    .then(total => {
+                        const elemento = document.querySelector(`#${elementoId}`);
+                        if (elemento) {
+                            const valorFormatado = new Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL'
+                            }).format(total);
+                            elemento.textContent = `${valorFormatado}`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Erro ao buscar total de ${endpoint}:`, error);
+                    });
+            }
 
-            // Busca total de Receitas
-            fetch(`http://localhost:8080/receitas/total/${encodeURIComponent(usuario.email)}`, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json",
-                }
-            })
-                .then(response => response.json())
-                .then(total => {
-                    const elemento = document.querySelector("#receita-total");
-                    if (elemento) {
-                        const valorFormatado = new Intl.NumberFormat('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL'
-                        }).format(total);
-
-                        elemento.textContent = `${valorFormatado}`;
-                    }
-                })
-                .catch(error => {
-                    console.error("Erro ao buscar total de despesas:", error);
-                });
+            atualizarTotal("despesas/total", "despesa-total");
+            atualizarTotal("receitas/total", "receita-total");
         }
         console.log(JSON.parse(localStorage.getItem("usuario")));
     }

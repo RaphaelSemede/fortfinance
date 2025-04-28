@@ -1,0 +1,46 @@
+.despesas{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.box #despesas{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+input {
+    width: 350px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#descricao{
+    height: 150px;
+}
+
+.buttons #adicionar {
+    width: 150px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
